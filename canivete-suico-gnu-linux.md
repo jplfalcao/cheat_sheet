@@ -2,7 +2,7 @@
 
 ## Software Livre
 
-Para um software ser considerado livre, ele precisa precisa seguir, **sem exceção**, as quatro seguintes liberdades:
+Para um software ser considerado livre, ele precisa seguir, **sem exceção**, as quatro seguintes liberdades:
 
 - Liberdade número 0: O utilizador tem a liberdade de executar o software, para qualquer propósito/finalidade;
 - Liberdade número 1: O utilizador tem a liberdade de estudar o funcionamento do software, alterando/adaptando conforme sua necessidade, sendo necessário o acesso total ao código fonte;
@@ -45,11 +45,13 @@ Ele também resolve todas as atribuições as variáveis definidas;
 
 6. Envia a linha de comando para o Kernel e, após encerrar o processo, devolve o **prompt**.
 
-## Redefinindo a senha de root - Debian
+## Redefinindo a senha de root
+
+### Debian
 
 > Para realizar este procedimento, precisa ter acesso físico ao: Desktop, Notebook ou Servidor.
 
-Caso não se lembre ou, por outra razão, precise alterar a senha do usuário *root*, na tela do *GRUB*, pressione a tecla `'e'` para editar as "entradas do *GRUB*".<br>
+Caso não se lembre ou, por outra razão, precise redefinir a senha do usuário *root*, na tela do *GRUB*, pressione a tecla `'e'` para editar as "entradas do *GRUB*".<br>
 
 ![TelaGRUB](https://github.com/jplfalcao/cheat_sheet/blob/main/debian_recovery_password/debian-recovery-password-1.png)
 
@@ -75,7 +77,7 @@ Realize o *login* utilizando o usuário *root* e a senha alterada.
 
 ![TelaLogin](https://github.com/jplfalcao/cheat_sheet/blob/main/debian_recovery_password/debian-recovery-password-4.png)
 
-## Redefinindo a senha de root - Rocky Linux
+### Rocky Linux
 
 Pressione a tecla `'e'` para editar o *GRUB*.<br>
 
@@ -126,3 +128,174 @@ Por fim, finalizamos a sessão e reinicializamos o sistema:
 Realize o *login* utilizando o usuário *root* e a senha alterada.
 
 ![TelaLogin](https://github.com/jplfalcao/cheat_sheet/blob/main/rockylinux_recovery_password/rockylinux-recovery-password-4.png)
+
+## Gerenciador de pacotes
+
+### Debian
+
+No GNU/Linux Debian e seus derivados, a ferramenta, em linha de comando (**CLI**), utilizada para realizar a administração dos pacotes é o **APT** (*Advanced Package Tool*).
+
+Atualizando a lista de pacotes:
+
+```
+# apt update
+```
+
+Este comando consulta o arquivo */etc/apt/sources.list*, e verifica quais pacotes possuem novas versões, na base de dados do repositório oficial, e compara com todos os pacotes que estão instalados no sistema.
+
+Atualizando todos os pacotes do sistema:
+
+```
+# apt upgrade
+```
+Atualiza todos os pacotes, após executar o `apt update`, que tenham novas versões disponíveis.
+
+Instalando um pacote:
+
+```
+# apt install <nome-do-pacote>
+```
+
+Realizando apenas o download (sem instalar) de um pacote:
+
+```
+# apt install --download-only <nome-do-pacote>
+```
+
+Isso pode ser necessário caso deseje instalar o pacote em outro momento.<br>
+Após o download, o pacote ficará no diretório */var/cache/apt/archives/nome-do-pacote.deb*.
+
+Reinstalando um pacote:
+
+```
+# apt reinstall <nome-do-pacote>
+```
+
+Pesquisando por um pacote:
+
+```
+# apt search <nome-do-pacote>
+```
+
+Informações sobre um pacote:
+
+```
+# apt show <nome-do-pacote>
+```
+
+Verifica o estado de um pacote:
+
+> Caso não seja passado o nome-do-pacote como parâmetro, todos os pacotes disponíveis serão listados.
+
+```
+# apt list <nome-do-pacote>
+```
+
+Se o pacote estiver instalado, aparecerá, ao final do nome: *\[installed\]*
+
+Removendo um pacote:
+
+```
+# apt remove <nome-do-pacote>
+```
+
+Esse procedimento remove um pacote instalado, mantendo, apenas, os arquivos de configuração.
+
+Caso deseje remover um pacote e seus arquivos de configuração completamente:
+
+```
+# apt purge <nome-do-pacote>
+```
+
+Limpando o *cache*:
+
+```
+# apt autoclean
+```
+
+Esse comando remove os *aquivos.deb* dos pacotes que não estão mais instalados, liberando espaço de armazenamento do diretório */var/cache/apt/archives/*.
+
+Removendo pacotes que não são mais necessários:
+
+```
+# apt autoremove
+```
+
+Este comando remove os pacote e suas dependências.
+
+### Rocky Linux
+
+No GNU/Linux Rocky Linux, a ferramenta, em linha de comando, utilizada para realizar a administração dos pacotes é o **DNF** (*Dandified YUM*).<br>
+A proposta do DNF, quando implementado, foi aumentar a performance e melhorar a resolução de dependências, se comparado ao *YUM*.
+
+Verificando quais repositórios estão habilitados e desabilitados:
+
+```
+# dnf repolist all
+```
+
+Verificando atualizações do sistema:
+
+```
+# dnf check-update
+```
+
+Este comando consulta o arquivo */etc/yum.repos.d/rocky.repo*, e verifica quais pacotes possuem novas versões, na base de dados do repositório oficial, e compara com todos os pacotes que estão instalados no sistema.
+
+Atualizando todos os pacotes do sistema:
+
+```
+# dnf update
+```
+
+Instalando um pacote:
+
+```
+# dnf install <nome-do-pacote>
+```
+
+Reinstalando um pacote:
+
+```
+# dnf reinstall <nome-do-pacote>
+```
+
+Pesquisando por um pacote:
+
+```
+# dnf search <nome-do-pacote>
+```
+
+Informações sobre um pacote:
+
+```
+# dnf info <nome-do-pacote>
+```
+
+Lista somente os pacotes instalados:
+
+> O comando `dnf list` lista todos os pacotes instalados e os disponíveis.
+
+```
+# dnf list installed
+```
+
+Removendo um pacote:
+
+```
+# dnf remove <nome-do-pacote>
+```
+
+Removendo todos os pacotes instalados e suas dependências, que não são mais necessários.
+
+```
+# dnf autoremove
+```
+
+limpando todos os caches e arquivos temporários.
+
+```
+# dnf clean all
+```
+
+Este comando limpa o diretório */var/cache/dnf*.
