@@ -45,6 +45,32 @@ Ele também resolve todas as atribuições as variáveis definidas;
 
 6. Envia a linha de comando para o Kernel e, após encerrar o processo, devolve o **prompt**.
 
+## FHS - Filesystem Hierarchy Standard
+
+O padrão de hierarquia do sistema de arquivos (*FHS 3.0 - 2015/06/03*) tem como objetivo a uniformização e organização dos principais diretórios e arquivos de um sistema GNU/Linux.<br>
+Essa organização te garante uma certeza de que, todos os arquivos serão armazenados em seus respectivos diretórios (se precisar editar um arquivo de configuração, por exemplo, ele estará no diretório */etc*), mantendo a compatibilidade em várias distribuições.<br>
+
+Toda essa estrutura se inicial pelo diretório barra **/**, chamado de *raiz*:
+
+- **/bin (/usr/bin)**: Binários essenciais (comandos que podem ser utilizados por todos os usuários);
+- **/boot**: Arquivos estáticos do gerenciador de inicialização (*GRUB*);
+- **/dev**: Arquivos de dispositivos e especiais;
+- **/etc**: Arquivos de configuração;
+- **/home**: Diretório pessoal dos usuários;
+- **/lib (/usr/lib)**: Bibliotecas essenciais e módulos do *Kernel*;
+- **/media**: Ponto de montagem temporário para mídias removíveis;
+- **/mnt**: Ponto de montagem temporário para sistema de arquivos;
+- **/opt**: Pacotes de softwares complementares;
+- **/proc**: Diretório virtual para informações do sistema;
+- **/root**: Diretório pessoal do superusuário (*root*);
+- **/run**: Dados variáveis ​​em tempo de execução;
+- **/sbin (/usr/sbin)**: Binários essenciais do sistema (apenas o usuário root, ou um usuário com poderes de *sudo*, podem utilizar esses comandos);
+- **/srv**: Dados dos serviços do sistema;
+- **/sys**: Diretório virtual para informações do sistema;
+- **/tmp**: Arquivos temporários;
+- **/usr**: Utilitários e aplicações multi-usuário;
+- **/var**: Arquivos de dados variáveis (conteúdo dinâmico).
+
 ## Redefinindo a senha de root
 
 ### Debian
@@ -272,7 +298,7 @@ Informações sobre um pacote:
 # dnf info <nome-do-pacote>
 ```
 
-Lista somente os pacotes instalados:
+Listando apenas os pacotes instalados:
 
 > O comando `dnf list` lista todos os pacotes instalados e os disponíveis.
 
