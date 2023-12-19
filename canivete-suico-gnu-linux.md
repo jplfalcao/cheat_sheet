@@ -325,3 +325,101 @@ limpando todos os caches e arquivos temporários.
 ```
 
 Este comando limpa o diretório */var/cache/dnf*.
+
+## VIM - VI Melhorado
+
+O **vi** é o editor de texto, de linha de comando, padrão UNIX e GNU/Linux criado por Bill Joy em 1976.<br>
+O **vim** é uma implementação com melhorias criado Bram Moolenaar em 1991.
+
+Debian:
+
+```
+# apt update
+# apt install vim
+```
+
+Rocky Linux:
+
+```
+# dnf update
+# dnf install vim
+```
+
+### Global
+
+- `ESC` \- Modo Normal;
+- `:` \- Modo Comando;
+-  `:set number` \- Número de linhas;
+-  `:syntax on` \- Realce de sintaxe (Syntax highlighting).
+
+### Movimentando o cursor
+
+- `h` \- Move o cursor para esquerda;
+- `j` \- Move o cursor para baixo;
+- `k` \- Move o cursor para cima;
+- `l` \- Move o cursor para direita;
+- `w` \- Move o cursor para o início de cada palavra;
+- `e` \- Move o cursor para o fim de cada palavra;
+- `b` \- Volta o cursor para o início de cada palavra;
+- `0` (zero) \- Move o cursor para o início da linha;
+- `$` \- Move o cursor para o fim da linha;
+- `gg` \- Move o cursor para primeira linha do arquivo;
+- `G` \- Move o cursor para última linha do arquivo.
+
+### Modo Inserção
+
+- `i` \- Insere na posição do cursor;
+- `I` \- Insere no início da linha;
+- `a` \- Insere depois do cursor;
+- `A` \- Insere no final da linha;
+- `o` \- Insere uma nova linha abaixo da linha atual;
+- `O` \- Insere uma nova linha acima da linha atual.
+
+### Copiar, recortar, colar e deletar
+
+- `yy` \- Copia uma linha;
+- `yw` \- Copia uma palavra;
+- `y0` \- Copia, a partir do cursor, até o início da linha;
+- `y$` \- Copia, a partir do cursor, até o fim da linha;
+- `Nyy` | `yNy` \- Copia o número de linhas determinadas por **N**;
+- `p` \- Cola após o cursor;
+- `P` \- Cola antes do cursor;
+- `dd` \- Deleta | recorta uma linha;
+- `dw` \- Deleta | recorta  uma palavra;
+- `d0` \- Deleta | recorta, a partir do cursor, até o início da linha;
+- `d$` \- Deleta | recorta, a partir do cursor, até o fim da linha;
+- `Ndd` | `dNd` \- Deleta | recorta o número de linhas determinadas por **N**;
+- `:N,Nd` - Deleta o número de linhas de **N** até **N**.
+
+### Salvar e sair
+
+- `:w` \- Salva o arquivo sem sair;
+- `:wq` | `:x` | `ZZ` \- Salva o arquivo e sai;
+- `:q` \- Sai do arquivo apenas se todas as alterações estiverem salvas;
+- `:q!` \- Sai do arquivo ignorando e descartando todas as alterações não salvas.
+
+### Edição
+
+- `r` \- Substitui um caractere;
+- `R` \- Entra no modo de inserção para substituir caracteres até que a tecla `ESC` seja precionada;
+- `cc` | `S` \- Substitui toda linha e entra no modo de inserção;
+- `c$` | `C` \- Substitui toda linha, a partir do cursor, até o final e entra no modo de inserção;
+- `u` \- Desfazer;
+- `U` \- Desfaz a última linha alterada;
+- `Ctrl + r` \- Refazer alterações desfeitas.
+
+### Modo Visual
+
+- `v` \- Seleção de texto;
+- `V` \- Seleção de linha;
+- `ggVG` \- Seleciona todo o texto.
+
+### Localizar e substituir
+
+- `/PALAVRA` \- Pesquisa por PALAVRA a partir do cursor;
+- `?PALAVRA` \- Pesquisa por PALAVRA antes do cursor;
+- `n` \- Pesquisa a próxima PALAVRA;
+- `N` \- Pesquisa a PALAVRA anterior;
+- `:s/PALAVRA/PALAVRANOVA` \- Troca a primeira ocorrência de PALAVRA na linha por PALAVRANOVA;
+- `:%s/PALAVRA/PALAVRANOVA/g` \- Troca PALAVRA por PALAVRANOVA em todo o documento.
+
