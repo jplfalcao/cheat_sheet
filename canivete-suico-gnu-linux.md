@@ -349,8 +349,8 @@ Rocky Linux:
 
 - `ESC` \- Modo Normal;
 - `:` \- Modo Comando;
--  `:set number` \- Número de linhas;
--  `:syntax on` \- Realce de sintaxe (Syntax highlighting).
+- `:set number` \- Número de linhas;
+- `:set syntax on` \- Realce de sintaxe (Syntax highlighting).
 
 ### Movimentando o cursor
 
@@ -389,7 +389,9 @@ Rocky Linux:
 - `d0` \- Deleta | recorta, a partir do cursor, até o início da linha;
 - `d$` \- Deleta | recorta, a partir do cursor, até o fim da linha;
 - `Ndd` | `dNd` \- Deleta | recorta o número de linhas determinadas por **N**;
-- `:N,Nd` - Deleta o número de linhas de **N** até **N**.
+- `:N,Nd` \- Deleta o número de linhas de **N** até **N**;
+- `x` \- Deleta um caractere à direita;
+- `X` \- Deleta um caractere á esquerda.
 
 ### Salvar e sair
 
@@ -420,6 +422,7 @@ Rocky Linux:
 - `?PALAVRA` \- Pesquisa por PALAVRA antes do cursor;
 - `n` \- Pesquisa a próxima PALAVRA;
 - `N` \- Pesquisa a PALAVRA anterior;
-- `:s/PALAVRA/PALAVRANOVA` \- Troca a primeira ocorrência de PALAVRA na linha por PALAVRANOVA;
-- `:%s/PALAVRA/PALAVRANOVA/g` \- Troca PALAVRA por PALAVRANOVA em todo o documento.
+- `:s/PALAVRA/PALAVRANOVA` \- Troca a primeira ocorrência de PALAVRA, na linha, por PALAVRANOVA;
+- `:%s/PALAVRA/PALAVRANOVA/g` \- Troca PALAVRA por PALAVRANOVA em todo o documento;
+- `:%s/PALAVRA/PALAVRANOVA/gc` \- Troca PALAVRA por PALAVRANOVA em todo o documento, pedindo confirmação para cada substituição.
 
